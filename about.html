@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Summit Prep</title>
+  <meta name="description" content="Dual‑Ivy tutor (Brown & Columbia). 1:1 SAT & Academic English with clear instruction, careful feedback, and dependable results." />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif}
+
+    /* Progress bar */
+    .scroll-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:left;transform:scaleX(0);background:#0f172a;z-index:60}
+
+    /* Global polish */
+    .glass{background:rgba(255,255,255,.72);backdrop-filter:saturate(160%) blur(12px);border:1px solid rgba(15,23,42,.08)}
+    .card.hover{transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s}
+    .card.hover:hover{transform:translateY(-6px);box-shadow:0 18px 50px -24px rgba(2,6,23,.35)}
+    .header-shadow{box-shadow:0 12px 30px -25px rgba(2,6,23,.45)}
+
+    /* Headline treatments (same as home) */
+    .gradient-text-animate{
+      background: linear-gradient(120deg,#0b1220 0%, #334155 45%, #6b7280 70%, #ffffff 100%);
+      background-size:300% 300%;
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      animation: gradientShift 10s ease-in-out infinite; text-shadow:0 0 10px rgba(255,255,255,.12);
+    }
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+    /* Buttons (same visual language as home) */
+    .btn-primary{background:#0f172a;color:#fff;border:1px solid rgba(255,255,255,.2);box-shadow:0 4px 18px rgba(2,6,23,.2);transition:transform .25s ease,box-shadow .25s ease}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(2,6,23,.28)}
+    .btn-outline{background:linear-gradient(135deg,#fff,#f3f4f6);color:#0f172a;border:1px solid rgba(15,23,42,.14);box-shadow:0 6px 18px rgba(2,6,23,.08);transition:transform .25s ease,box-shadow .25s ease}
+    .btn-outline:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(2,6,23,.16)}
+
+    /* Nav pills (match home) */
+    .nav-pill{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 .9rem;border-radius:9999px;font-weight:600;color:#0f172a;transition:background .2s ease,box-shadow .2s ease,transform .2s ease}
+    .nav-pill:hover{background:rgba(15,23,42,.06);transform:translateY(-1px)}
+    .nav-active{background:#0f172a;color:#fff;box-shadow:0 6px 18px rgba(2,6,23,.18)}
+
+    /* Reveal utils */
+    [data-animate]{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+    [data-animate].in{opacity:1;transform:none}
+
+    /* Logos (consistent with home look) */
+    .logo-row{display:flex;gap:2.5rem;align-items:center;justify-content:center;filter:grayscale(1) contrast(.95) brightness(.93);opacity:.9}
+    .logo-row img{height:64px}
+    .logo-row img:hover{filter:none;opacity:1;transform:translateY(-2px);transition:all .45s cubic-bezier(.16,1,.3,1)}
+
+    /* Timeline */
+    .timeline{position:relative;margin-left:0;padding-left:1.25rem;border-left:2px solid rgba(15,23,42,.1)}
+    .timeline-item{position:relative;margin:0 0 1.5rem 0;padding-left:.5rem}
+    .timeline-dot{position:absolute;left:-0.6rem;top:.35rem;width:.75rem;height:.75rem;border-radius:999px;background:#0f172a;box-shadow:0 0 0 4px rgba(15,23,42,.08)}
+    .timeline-card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:.9rem;padding:1rem}
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion:reduce){
+      [data-animate]{transition:none!important}
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-900 font-[Inter]">
+  <!-- Progress bar -->
+  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="home.html#home" class="inline-flex items-center gap-2" aria-label="Summit Prep">
+          <img src="logo.png" alt="Summit Prep" class="h-9 w-auto" loading="eager" />
+          <span class="sr-only">Summit Prep</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="home.html#home" class="nav-pill">Home</a>
+          <a href="about.html" class="nav-pill nav-active">About</a>
+          <a href="contact.html" class="nav-pill">Contact</a>
+          <a href="home.html#book" class="nav-pill">Book Now</a>
+        </nav>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border">
+          <span class="sr-only">Open menu</span>
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileNav" class="md:hidden hidden border-t bg-white/90 backdrop-blur">
+      <div class="px-4 py-3 flex flex-col gap-3">
+        <a href="home.html#home" class="nav-pill">Home</a>
+        <a href="about.html" class="nav-pill nav-active">About</a>
+        <a href="contact.html" class="nav-pill">Contact</a>
+        <a href="home.html#book" class="nav-pill text-center">Book Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-white to-slate-50">
+    <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+      <div data-animate data-delay="0">
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+          <span class="gradient-text-animate">About the Tutor</span>
+        </h1>
+        <p class="mt-4 text-slate-600">
+          I studied at <span class="font-semibold">Brown</span> and <span class="font-semibold">Columbia</span>. I teach SAT & Academic English one‑to‑one with clear instruction, steady practice, and careful feedback. My approach is calm, structured, and built for ambitious students (including internationals) aiming high.
+        </p>
+        <div class="mt-6 flex gap-3">
+          <a href="home.html#book" class="rounded-xl px-4 py-2 btn-primary">Book a Diagnostic</a>
+          <a href="home.html#pricing" class="rounded-xl px-4 py-2 btn-outline">See Pricing</a>
+        </div>
+      </div>
+
+      <!-- Logos + quick credentials -->
+      <div class="rounded-2xl border bg-white p-6 shadow-sm max-w-xl mx-auto" data-animate data-delay="90">
+        <div class="logo-row mb-4">
+          <img src="Brown-university-emblem.png" alt="Brown University emblem" loading="lazy" decoding="async" />
+          <img src="columbia-uni.png" alt="Columbia University emblem" loading="lazy" decoding="async" />
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="flex items-center gap-3 p-3 rounded-xl border bg-white">
+            <div>
+              <div class="font-medium leading-tight">Brown University</div>
+              <div class="text-xs text-slate-500">Humanities • Language • Rhetoric</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-3 rounded-xl border bg-white">
+            <div>
+              <div class="font-medium leading-tight">Columbia University</div>
+              <div class="text-xs text-slate-500">Advanced Writing • Test Strategy</div>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs text-slate-500 mt-3">Emblems are trademarks of their respective universities; no endorsement implied.</p>
+      </div>
+    </div>
+
+    <!-- Stat strip -->
+    <div class="border-t">
+      <div class="max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-3 gap-4 text-center">
+        <div class="card hover" data-animate data-delay="0">
+          <div class="text-sm text-slate-500">Focus</div>
+          <div class="font-semibold mt-1">SAT & Academic English</div>
+        </div>
+        <div class="card hover" data-animate data-delay="60">
+          <div class="text-sm text-slate-500">Format</div>
+          <div class="font-semibold mt-1">100% 1:1</div>
+        </div>
+        <div class="card hover" data-animate data-delay="120">
+          <div class="text-sm text-slate-500">Method</div>
+          <div class="font-semibold mt-1">Diagnose → Train → Execute</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY WE STARTED (Origin story) -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-10 items-start">
+      <div class="md:col-span-7" data-animate>
+        <h2 class="text-2xl md:text-3xl font-semibold">Why I Started</h2>
+        <p class="mt-3 text-slate-600">
+          I began tutoring because most prep felt generic. It wasn’t built for students balancing language, pacing, and unfamiliar question styles.
+        </p>
+        <p class="mt-3 text-slate-600">
+          So I built Summit Prep: a simple, disciplined way to prepare. We use timing ladders, error taxonomies, and writing rubrics — then turn them into weekly playbooks you can follow.
+        </p>
+        <p class="mt-3 text-slate-600">
+          The goal isn’t hype; it’s calm execution. You’ll know what to do each week, where points are hiding, and how to write under pressure.
+        </p>
+      </div>
+      <aside class="md:col-span-5" data-animate data-delay="90">
+        <div class="glass rounded-2xl p-6">
+          <div class="text-sm uppercase tracking-wide text-slate-500">Founder’s note</div>
+          <p class="mt-2 text-sm text-slate-700">
+            “My students didn’t need tricks — they needed a blueprint. This is the mentorship I wish I’d had: clear instruction, deliberate practice, and honest feedback.”
+          </p>
+          <div class="mt-4 border-t pt-4 text-sm">
+            <div class="font-semibold">Dual-Ivy Graduate</div>
+            <div class="text-slate-500">Brown & Columbia</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold">How We Work</h2>
+      <p class="mt-2 text-slate-600">Precise plan. Tight feedback loop. No fluff.</p>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="card hover" data-animate data-delay="0">
+          <div class="text-sm text-slate-500">Phase 1</div>
+          <div class="font-semibold mt-1">Diagnostic & Plan</div>
+          <p class="text-sm mt-2">Baseline test, error taxonomy, and a week‑by‑week plan you can follow.</p>
+        </div>
+        <div class="card hover" data-animate data-delay="90">
+          <div class="text-sm text-slate-500">Phase 2</div>
+          <div class="font-semibold mt-1">Targeted Training</div>
+          <p class="text-sm mt-2">Deliberate practice on timing and question families; rubric‑based writing drills.</p>
+        </div>
+        <div class="card hover" data-animate data-delay="180">
+          <div class="text-sm text-slate-500">Phase 3</div>
+          <div class="font-semibold mt-1">Execute & Review</div>
+          <p class="text-sm mt-2">Full tests under time, post‑mortems, and small adjustments until consistent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold">What I Stand For</h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-6">
+        <div class="card hover" data-animate data-delay="0">
+          <div class="font-semibold">Clarity</div>
+          <p class="text-sm mt-2">No vague notes. You receive specific directions and measurable targets.</p>
+        </div>
+        <div class="card hover" data-animate data-delay="80">
+          <div class="font-semibold">Discipline</div>
+          <p class="text-sm mt-2">Short, focused sessions beat cramming. Consistency compounds.</p>
+        </div>
+        <div class="card hover" data-animate data-delay="160">
+          <div class="font-semibold">Integrity</div>
+          <p class="text-sm mt-2">No admissions guarantees. Just honest coaching and real work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold">How the Playbook Came Together</h2>
+      <ol class="timeline mt-8">
+        <li class="timeline-item" data-animate data-delay="0">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="font-semibold">Brown University</div>
+            <div class="text-sm text-slate-600 mt-1">Humanities and language training; foundation of the communication framework.</div>
+          </div>
+        </li>
+        <li class="timeline-item" data-animate data-delay="90">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="font-semibold">Columbia University</div>
+            <div class="text-sm text-slate-600 mt-1">Advanced writing, research, and test strategy synthesis.</div>
+          </div>
+        </li>
+        <li class="timeline-item" data-animate data-delay="180">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="font-semibold">Ivy SAT & English</div>
+            <div class="text-sm text-slate-600 mt-1">Boutique program for international students: Diagnose → Train → Execute.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="rounded-2xl border bg-white p-6 shadow-sm grid md:grid-cols-2 gap-6 items-center" data-animate>
+        <div>
+          <h3 class="text-xl font-semibold">Start with a 30-minute diagnostic</h3>
+          <p class="text-sm text-slate-600 mt-2">We’ll map your score, find the leaks, and build your plan. If it’s not a fit after the first session, you get a refund—no drama.</p>
+        </div>
+        <div class="flex gap-3 md:justify-end">
+          <a href="home.html#book" class="rounded-xl px-4 py-2 btn-primary">Book Now</a>
+          <a href="home.html#pricing" class="rounded-xl px-4 py-2 btn-outline">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t">
+    <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-600 flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+      <div>© <span id="y"></span> Summit Prep</div>
+      <div class="flex gap-4">
+        <a href="home.html#book" class="hover:text-slate-800">Book</a>
+        <a href="about.html" class="hover:text-slate-800">About</a>
+        <a href="contact.html" class="hover:text-slate-800">Contact</a>
+        <a href="#" class="hover:text-slate-800">Policies</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // year + mobile nav
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mobileNav');
+    btn?.addEventListener('click', () => nav.classList.toggle('hidden'));
+
+    // header shadow on scroll
+    const headerEl = document.querySelector('header');
+    const onScroll = () => { if (window.scrollY > 2) headerEl.classList.add('header-shadow'); else headerEl.classList.remove('header-shadow'); };
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    // Top scroll progress
+    (function(){
+      const bar = document.getElementById('scrollProgress');
+      if(!bar) return;
+      const update = () => {
+        const h = document.documentElement;
+        const scrolled = h.scrollTop || document.body.scrollTop;
+        const max = (h.scrollHeight - h.clientHeight) || 1;
+        const p = Math.max(0, Math.min(1, scrolled / max));
+        bar.style.transform = `scaleX(${p})`;
+      };
+      update();
+      window.addEventListener('scroll', update, {passive:true});
+      window.addEventListener('resize', update);
+    })();
+
+    // Reveal animations
+    (function(){
+      const els = [...document.querySelectorAll('[data-animate]')];
+      if (!els.length) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+            setTimeout(() => el.classList.add('in'), delay);
+            io.unobserve(el);
+          }
+        });
+      }, { threshold: 0.18 });
+      els.forEach(el => io.observe(el));
+    })();
+  </script>
+</body>
+</html>

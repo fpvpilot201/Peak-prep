@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book — Summit Prep</title>
+  <meta name="description" content="Book SAT tutoring or Academic English sessions with a Dual-Ivy Graduate." />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif}
+
+    /* Polish */
+    .glass{background:rgba(255,255,255,.72);backdrop-filter:saturate(160%) blur(12px);border:1px solid rgba(15,23,42,.08)}
+    .card.hover{transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s}
+    .card.hover:hover{transform:translateY(-6px);box-shadow:0 18px 50px -24px rgba(2,6,23,.35)}
+    .progress{position:fixed;top:0;left:0;height:3px;background:#0f172a;transform-origin:left;transform:scaleX(0);z-index:60}
+
+    /* Header & nav (same theme) */
+    .site-header{background:rgba(255,255,255,.85);border-bottom:1px solid rgba(15,23,42,.08)}
+    .brand{color:#0f172a;font-weight:700}
+
+    /* CTAs (same as home) */
+    .btn-primary{background:#0f172a;color:#fff;border:1px solid rgba(255,255,255,.2);box-shadow:0 4px 18px rgba(2,6,23,.2);transition:transform .25s ease,box-shadow .25s ease}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(2,6,23,.28)}
+    .btn-quiet{background:linear-gradient(135deg,#fff,#f3f4f6);color:#0f172a;border:1px solid rgba(15,23,42,.14);box-shadow:0 6px 18px rgba(2,6,23,.08);transition:transform .25s ease,box-shadow .25s ease}
+    .btn-quiet:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(2,6,23,.16)}
+
+    /* Nav pills (match site) */
+    .nav-pill{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 .9rem;border-radius:9999px;font-weight:600;color:#0f172a;transition:background .2s ease,box-shadow .2s ease,transform .2s ease}
+    .nav-pill:hover{background:rgba(15,23,42,.06);transform:translateY(-1px)}
+    .nav-active{background:#0f172a;color:#fff;box-shadow:0 6px 18px rgba(2,6,23,.18)}
+
+    /* Headline treatment */
+    .gradient-text-animate{
+      background:linear-gradient(120deg,#0b1220 0%, #334155 45%, #6b7280 70%, #ffffff 100%);
+      background-size:300% 300%;
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      animation:gradientShift 10s ease-in-out infinite; text-shadow:0 0 10px rgba(255,255,255,.12)
+    }
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+    /* Reveal utils */
+    .fx-rise{opacity:0;transform:translateY(24px);transition:all .8s cubic-bezier(.22,1,.36,1)}
+    .fx-rise.revealed{opacity:1;transform:none}
+    .fx-fade{opacity:0;filter:blur(8px);transition:all .9s}
+    .fx-fade.revealed{opacity:1;filter:blur(0)}
+
+    /* Tag pills */
+    .pill{font-size:.75rem;padding:.25rem .6rem;border-radius:9999px;border:1px solid rgba(15,23,42,.12);background:#fff}
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion:reduce){
+      .fx-rise,.fx-fade,.card.hover{transition:none!important;animation:none!important}
+    }
+
+    /* Top-gap fix */
+    html, body { margin: 0; padding: 0; }
+    #progress { position: fixed; top: 0; left: 0; width: 100%; pointer-events: none; }
+    .site-header { position: sticky; top: 0; margin: 0; }
+    .site-header + section { margin-top: 0 !important; }
+    .site-header + section > *:first-child { margin-top: 0 !important; }
+    .site-header + section h1 { margin-top: 0; }
+
+    /* Toggle arrow smoothness */
+    .toggle-ico{transition:transform .25s ease}
+  </style>
+</head>
+<body class="antialiased text-slate-900">
+  <!-- Top progress -->
+  <div id="progress" class="progress" aria-hidden="true"></div>
+
+  <!-- Sticky checkout bar (appears on scroll) -->
+  <div id="stickyBar" class="fixed bottom-0 inset-x-0 z-40 hidden">
+    <div class="max-w-6xl mx-auto px-4 pb-4">
+      <div class="glass rounded-2xl p-3 flex items-center justify-between gap-3">
+        <div class="text-sm md:text-base">
+          <span class="font-semibold">Ready?</span> Finish in under 60 seconds. <span class="ml-2 text-xs text-slate-500">Secure • Refund guarantee</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="#tiers" class="px-4 py-2 rounded-xl btn-quiet">One‑off</a>
+          <a href="#subs" class="px-4 py-2 rounded-xl btn-primary">Subscribe</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header sticky top-0 z-50 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
+      <a href="home.html#home" class="inline-flex items-center gap-2" aria-label="Summit Prep">
+        <img src="logo.png" alt="Summit Prep" class="h-9 w-auto" loading="eager" />
+        <span class="sr-only">Summit Prep</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="home.html#home" class="nav-pill">Home</a>
+        <a href="about.html" class="nav-pill">About</a>
+        <a href="contact.html" class="nav-pill">Contact</a>
+        <a href="#tiers" class="nav-pill nav-active">Book Now</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border">
+        <span class="sr-only">Open menu</span>
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="mobileNav" class="md:hidden hidden border-t">
+      <div class="px-4 py-3 flex flex-col gap-3">
+        <a href="home.html#home" class="nav-pill">Home</a>
+        <a href="about.html" class="nav-pill">About</a>
+        <a href="contact.html" class="nav-pill">Contact</a>
+        <a href="#tiers" class="nav-pill nav-active text-center">Book Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Trust strip / authority -->
+  <section class="py-6 border-y bg-white">
+    <div class="max-w-6xl mx-auto px-4 flex flex-wrap items-center gap-3 justify-between">
+      <div class="text-sm text-slate-600">Trusted by families targeting top schools.</div>
+      <div class="flex flex-wrap gap-2 items-center text-slate-500 text-xs md:text-sm">
+        <span class="pill">Dual‑Ivy Graduate Instructor</span>
+        <span class="pill">500+ students coached</span>
+        <span class="pill">Essay feedback in 48h</span>
+        <span class="pill">Flexible rescheduling</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick jump -->
+  <section class="py-6 bg-white">
+    <div class="max-w-6xl mx-auto px-4 flex flex-wrap items-center gap-3 justify-between">
+      <div class="text-sm text-slate-600">Skip to:</div>
+      <div class="flex flex-wrap gap-2">
+        <a href="#tiers" class="pill">One-off Sessions</a>
+        <a href="#subs" class="pill">Monthly Subscriptions</a>
+        <a href="#compare" class="pill">Compare</a>
+        <a href="#faq" class="pill">FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scarcity + countdown -->
+  <section id="urgency" class="py-6 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3">
+      <div class="text-sm text-slate-700">This week’s availability: <span id="spots" class="font-semibold">—</span> slots left.</div>
+      <div class="text-sm text-slate-700">Early‑bird ends in <span id="countdown" class="font-semibold tabular-nums">—:—:—</span>.</div>
+      <a href="#tiers" class="px-3 py-2 rounded-lg btn-primary text-sm">Reserve a spot</a>
+    </div>
+  </section>
+
+  <!-- One-off tiers -->
+  <section id="tiers" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-semibold">One-off Sessions</h2>
+      <p class="mt-2 text-slate-600">Best for diagnostics or focused boosts.</p>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <!-- Light -->
+        <div class="glass rounded-2xl p-6 text-left card hover relative">
+          <span class="absolute -top-3 left-4 text-xs bg-slate-900 text-white px-3 py-1 rounded-full">Starter</span>
+          <div class="text-sm text-slate-500">Diagnostic</div>
+          <h3 class="font-semibold text-lg mt-1 flex items-center justify-between">
+            Light
+            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-light">
+              Details
+              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div id="features-light" class="mt-2 hidden">
+            <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+              <li>Baseline SAT/English assessment</li>
+              <li>Personalized 4‑week plan</li>
+              <li>Score projection</li>
+            </ul>
+          </div>
+          <div class="mt-4 text-3xl font-bold flex items-end gap-2">$59 <del class="text-slate-400 text-xl">$79</del></div>
+          <div class="mt-5 flex gap-2">
+            <a href="https://buy.stripe.com/test_6oUeV5eCf8Or0LNbdO8EM00" target="_blank" rel="noopener" class="px-4 py-2 rounded-full btn-primary">Book & Pay</a>
+            <button type="button" class="px-4 py-2 rounded-full btn-quiet feat-toggle" aria-expanded="false" aria-controls="features-light">What’s included?</button>
+          </div>
+        </div>
+
+        <!-- Standard (most popular) -->
+        <div class="glass rounded-2xl p-6 text-left card hover ring-1 ring-slate-200 relative">
+          <div class="absolute -top-3 left-4">
+            <span class="bg-emerald-600 text-white text-xs px-3 py-1 rounded-full">Most Popular</span>
+          </div>
+          <div class="text-sm text-slate-500">1:1 Session</div>
+          <h3 class="font-semibold text-lg mt-1 flex items-center justify-between">
+            Standard
+            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-standard">
+              Details
+              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div id="features-standard" class="mt-2 hidden">
+            <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+              <li>60 min SAT or Academic English</li>
+              <li>Targeted drills + homework</li>
+              <li>Parent summary within 24h</li>
+            </ul>
+          </div>
+          <div class="mt-4 text-3xl font-bold flex items-end gap-2">$125</div>
+          <div class="mt-5 flex gap-2">
+            <a href="https://buy.stripe.com/test_aFa8wHeCf5Cf0LN0za8EM01" target="_blank" rel="noopener" class="px-4 py-2 rounded-full btn-primary">Book & Pay</a>
+            <button type="button" class="px-4 py-2 rounded-full btn-quiet feat-toggle" aria-expanded="false" aria-controls="features-standard">What’s included?</button>
+          </div>
+          <p class="mt-3 text-xs text-slate-500">Recommended for first timers.</p>
+        </div>
+
+        <!-- Pro -->
+        <div class="glass rounded-2xl p-6 text-left card hover relative">
+          <span class="absolute -top-3 left-4 text-xs bg-indigo-600 text-white px-3 py-1 rounded-full">Best Results</span>
+          <div class="text-sm text-slate-500">Intensive</div>
+          <h3 class="font-semibold text-lg mt-1 flex items-center justify-between">
+            Pro
+            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-pro">
+              Details
+              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div id="features-pro" class="mt-2 hidden">
+            <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+              <li>90 min + async essay feedback</li>
+              <li>Error‑pattern analysis</li>
+              <li>7‑day follow‑up plan</li>
+            </ul>
+          </div>
+          <div class="mt-4 text-3xl font-bold flex items-end gap-2">$175</div>
+          <div class="mt-5 flex gap-2">
+            <a href="https://buy.stripe.com/test_28E28j51F0hV0LN81C8EM02" target="_blank" rel="noopener" class="px-4 py-2 rounded-full btn-primary">Book & Pay</a>
+            <button type="button" class="px-4 py-2 rounded-full btn-quiet feat-toggle" aria-expanded="false" aria-controls="features-pro">What’s included?</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-500 mt-4">Set your Stripe Payment Link to <strong>redirect after payment</strong> to: <code>https://YOUR_DOMAIN/booking.html?paid=light|standard|pro</code>. This page will auto‑send families to the matching Calendly event.</p>
+    </div>
+  </section>
+
+  <!-- Subscriptions -->
+  <section id="subs" class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-semibold">Monthly Subscriptions</h2>
+      <p class="mt-2 text-slate-600">Ongoing coaching + private booking links after checkout.</p>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <!-- Silver -->
+        <div class="glass rounded-2xl p-6 text-left card hover">
+          <h3 class="font-semibold text-lg flex items-center justify-between">
+            Silver
+            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-silver">
+              Details
+              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div id="features-silver" class="mt-1 hidden">
+            <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+              <li>4 private sessions / month (60 min)</li>
+              <li>Replay recording on request</li>
+              <li>Priority email support</li>
+            </ul>
+          </div>
+          <div class="mt-4 text-2xl font-bold">$399<span class="text-sm">/mo</span></div>
+          <div class="mt-5 flex gap-2">
+            <a href="https://buy.stripe.com/YOUR_STRIPE_LINK_SILVER" class="px-4 py-2 rounded-full btn-primary">Subscribe</a>
+            <button type="button" class="px-4 py-2 rounded-full btn-quiet feat-toggle" aria-expanded="false" aria-controls="features-silver">What’s included?</button>
+          </div>
+        </div>
+
+        <!-- Gold (anchor) -->
+        <div class="glass rounded-2xl p-6 text-left card hover ring-1 ring-slate-200 relative">
+          <div class="absolute -top-3 left-4">
+            <span class="bg-emerald-600 text-white text-xs px-3 py-1 rounded-full">Parent Favorite</span>
+          </div>
+          <h3 class="font-semibold text-lg flex items-center justify-between">
+            Gold
+            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-gold">
+              Details
+              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div id="features-gold" class="mt-1 hidden">
+            <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+              <li>8 private sessions / month (60 min)</li>
+              <li>Essay feedback: up to 2 drafts / month</li>
+              <li>Priority scheduling (next‑week guaranteed)</li>
+            </ul>
+          </div>
+          <div class="mt-4 text-2xl font-bold">$749<span class="text-sm">/mo</span></div>
+          <div class="mt-5 flex gap-2">
+            <a href="https://buy.stripe.com/YOUR_STRIPE_LINK_GOLD" class="px-4 py-2 rounded-full btn-primary">Subscribe</a>
+            <button type="button" class="px-4 py-2 rounded-full btn-quiet feat-toggle" aria-expanded="false" aria-controls="features-gold">What’s included?</button>
+          </div>
+        </div>
+
+        <!-- Platinum -->
+        <div class="glass rounded-2xl p-6 text-left card hover">
+          <h3 class="font-semibold text-lg flex items-center justify-between">
+            Platinum
+            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-platinum">
+              Details
+              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </h3>
+          <div id="features-platinum" class="mt-1 hidden">
+            <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+              <li>12 private sessions / month (60 min)</li>
+              <li>Unlimited essay drafts</li>
+              <li>Priority scheduling + WhatsApp check‑ins</li>
+            </ul>
+          </div>
+          <div class="mt-4 text-2xl font-bold">$1,499<span class="text-sm">/mo</span></div>
+          <div class="mt-5 flex gap-2">
+            <a href="https://buy.stripe.com/YOUR_STRIPE_LINK_PLATINUM" class="px-4 py-2 rounded-full btn-primary">Subscribe</a>
+            <button type="button" class="px-4 py-2 rounded-full btn-quiet feat-toggle" aria-expanded="false" aria-controls="features-platinum">What’s included?</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-500 mt-4">After subscribing, you’ll receive your private Calendly link to schedule included sessions.</p>
+    </div>
+  </section>
+
+  <!-- Comparison table (clarity) -->
+  <section id="compare" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold text-center">Compare Plans</h2>
+      <div class="mt-8 overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="text-left text-slate-500">
+              <th class="py-3 pr-6">Feature</th>
+              <th class="py-3 pr-6">One‑off</th>
+              <th class="py-3 pr-6">Silver</th>
+              <th class="py-3 pr-6">Gold</th>
+              <th class="py-3 pr-6">Platinum</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr>
+              <td class="py-3 pr-6">Sessions / month</td>
+              <td class="py-3 pr-6">—</td>
+              <td class="py-3 pr-6">4 privates</td>
+              <td class="py-3 pr-6">8 privates</td>
+              <td class="py-3 pr-6">12 privates</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-6">Session length</td>
+              <td class="py-3 pr-6">60–90m (one‑off)</td>
+              <td class="py-3 pr-6">60m</td>
+              <td class="py-3 pr-6">60m</td>
+              <td class="py-3 pr-6">60m</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-6">Essay feedback</td>
+              <td class="py-3 pr-6">Pro only</td>
+              <td class="py-3 pr-6">—</td>
+              <td class="py-3 pr-6">Up to 2 drafts/mo</td>
+              <td class="py-3 pr-6">Unlimited</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-6">Parent updates</td>
+              <td class="py-3 pr-6">24h summary</td>
+              <td class="py-3 pr-6">Monthly report</td>
+              <td class="py-3 pr-6">Bi‑weekly</td>
+              <td class="py-3 pr-6">Weekly</td>
+            </tr>
+            <tr>
+              <td class="py-3 pr-6">Priority scheduling</td>
+              <td class="py-3 pr-6">—</td>
+              <td class="py-3 pr-6">—</td>
+              <td class="py-3 pr-6">✓ (next‑week)</td>
+              <td class="py-3 pr-6">✓ (priority)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof carousel -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold text-center">What families say</h2>
+      <div class="relative mt-8">
+        <div id="carousel" class="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1" aria-label="Testimonials">
+          <!-- Slide 1 -->
+          <figure class="min-w-[80%] md:min-w-[32%] snap-start glass rounded-2xl p-6">
+            <blockquote class="text-slate-700">“Our son jumped 190 points in six weeks. Straightforward plan, no fluff.”</blockquote>
+            <figcaption class="mt-3 text-sm text-slate-500">— A. Patel, Parent</figcaption>
+          </figure>
+          <!-- Slide 2 -->
+          <figure class="min-w-[80%] md:min-w-[32%] snap-start glass rounded-2xl p-6">
+            <blockquote class="text-slate-700">“Essay feedback was ruthless and exactly what she needed. Admitted ED.”</blockquote>
+            <figcaption class="mt-3 text-sm text-slate-500">— L. Chen, Parent</figcaption>
+          </figure>
+          <!-- Slide 3 -->
+          <figure class="min-w-[80%] md:min-w-[32%] snap-start glass rounded-2xl p-6">
+            <blockquote class="text-slate-700">“Professional, responsive, and results‑driven. Worth every dollar.”</blockquote>
+            <figcaption class="mt-3 text-sm text-slate-500">— M. Johnson, Parent</figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="text-xs text-slate-400 mt-3">* Results vary. Claims based on internal tracking of past cohorts.</p>
+    </div>
+  </section>
+
+  <!-- Policies / Trust -->
+  <section id="policies" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl border p-6 bg-white card hover">
+        <h3 class="font-semibold flex items-center gap-2"><span class="i">Refunds</span><span class="ml-auto text-xs px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">Risk‑Free</span></h3>
+        <p class="text-sm text-slate-600 mt-2">If it’s not a fit after your first 1:1, request a full refund within 24 hours.</p>
+      </div>
+      <div class="rounded-2xl border p-6 bg-white card hover">
+        <h3 class="font-semibold">Subscriptions</h3>
+        <p class="text-sm text-slate-600 mt-2">Plans unlock private booking links with monthly caps (4/8/12+). Unused sessions don’t roll unless agreed in writing.</p>
+      </div>
+      <div class="rounded-2xl border p-6 bg-white card hover">
+        <h3 class="font-semibold">Rescheduling</h3>
+        <p class="text-sm text-slate-600 mt-2">Please reschedule at least 24 hours in advance to avoid forfeiting your booking.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (accordion) -->
+  <section id="faq" class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-semibold">FAQ</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <details class="rounded-2xl border bg-white p-6 group" open>
+          <summary class="font-semibold cursor-pointer flex items-center justify-between">Do I pay in Calendly or Stripe? <span class="ml-2 text-slate-400 group-open:rotate-180 transition">▾</span></summary>
+          <p class="text-sm text-slate-600 mt-2">One‑off sessions are paid directly in Calendly. Subscriptions are paid in Stripe, then you get a private scheduling link.</p>
+        </details>
+        <details class="rounded-2xl border bg-white p-6 group">
+          <summary class="font-semibold cursor-pointer flex items-center justify-between">Can I add more sessions later? <span class="ml-2 text-slate-400 group-open:rotate-180 transition">▾</span></summary>
+          <p class="text-sm text-slate-600 mt-2">Yes—book another 1:1 anytime or upgrade to a monthly plan with one click.</p>
+        </details>
+        <details class="rounded-2xl border bg-white p-6 group">
+          <summary class="font-semibold cursor-pointer flex items-center justify-between">Will my time zone be correct? <span class="ml-2 text-slate-400 group-open:rotate-180 transition">▾</span></summary>
+          <p class="text-sm text-slate-600 mt-2">Calendly auto‑detects your time zone and shows availability in your local time.</p>
+        </details>
+        <details class="rounded-2xl border bg-white p-6 group">
+          <summary class="font-semibold cursor-pointer flex items-center justify-between">What if I’m not satisfied? <span class="ml-2 text-slate-400 group-open:rotate-180 transition">▾</span></summary>
+          <p class="text-sm text-slate-600 mt-2">Full refund after the first 1:1 if it’s not a fit. No questions asked.</p>
+        </details>
+      </div>
+
+      <!-- Micro‑opt‑in (reciprocity) -->
+      <div class="mt-10 glass rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div>
+          <div class="font-semibold">Not ready to book?</div>
+          <p class="text-sm text-slate-600">Get the free SAT Checklist (7 mistakes that cap scores) in your inbox.</p>
+        </div>
+        <form onsubmit="event.preventDefault();window.location='mailto:you@example.com?subject=SAT%20Checklist%20Request'" class="flex w-full md:w-auto items-center gap-2">
+          <input type="email" required placeholder="Email" class="w-full md:w-64 px-3 py-2 rounded-xl border" />
+          <button class="px-4 py-2 rounded-xl btn-primary" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t">
+    <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-600 flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+      <div>© <span id="y"></span> Summit Prep</div>
+      <div class="flex gap-4">
+        <a href="home.html#home" class="hover:text-slate-800">Home</a>
+        <a href="about.html" class="hover:text-slate-800">About</a>
+        <a href="contact.html" class="hover:text-slate-800">Contact</a>
+        <a href="#policies" class="hover:text-slate-800">Policies</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Success bridge (Stripe -> Calendly) -->
+  <div id="successBridge" class="fixed top-3 inset-x-0 z-[60] hidden">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="glass rounded-2xl p-3 text-sm flex items-center justify-between gap-3">
+        <div>✅ Payment confirmed. Sending you to scheduling in <strong>5 seconds</strong>…</div>
+        <a id="fallbackLink" href="#" class="px-3 py-1 rounded-xl btn-quiet">Go now</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Year + mobile menu
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mobileNav');
+    btn?.addEventListener('click', ()=> nav.classList.toggle('hidden'));
+
+    // Progress bar on scroll
+    const progress = document.getElementById('progress');
+    const updateProgress = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight || 1;
+      progress.style.transform = `scaleX(${Math.min(1, (h.scrollTop || document.body.scrollTop) / max)})`;
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress, { passive: true });
+    updateProgress();
+
+    // Sticky checkout bar reveal
+    const stickyBar = document.getElementById('stickyBar');
+    const stickyToggle = () => {
+      const show = window.scrollY > 600; // after first fold
+      stickyBar.classList.toggle('hidden', !show);
+    };
+    window.addEventListener('scroll', stickyToggle, { passive: true });
+
+    // Reveal-on-view animations (respects reduced motion)
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const els = document.querySelectorAll('.fx-rise,.fx-fade');
+      if (prefersReduced || !els.length) return;
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(!e.isIntersecting) return;
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.15 });
+      els.forEach(el=>io.observe(el));
+    })();
+
+    // Deep-link to a plan via ?plan=light|standard|pro|silver|gold|platinum
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const plan = (params.get('plan') || '').toLowerCase();
+      if(!plan) return;
+
+      let targetCard = null;
+
+      // One-off sessions: match Calendly slug in href
+      if (['light','standard','pro'].includes(plan)) {
+        const cards = document.querySelectorAll('#tiers .glass');
+        targetCard = [...cards].find(card =>
+          card.querySelector(`a[href*="/${plan}"]`)
+        );
+        if (!targetCard) {
+          // Fallback by heading text
+          targetCard = [...cards].find(card =>
+            (card.querySelector('h3')?.textContent || '').toLowerCase().includes(plan)
+          );
+        }
+        document.getElementById('tiers')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Subscriptions: match heading text
+      if (!targetCard && ['silver','gold','platinum'].includes(plan)) {
+        const scards = document.querySelectorAll('#subs .glass');
+        targetCard = [...scards].find(card =>
+          (card.querySelector('h3')?.textContent || '').toLowerCase().includes(plan)
+        );
+        document.getElementById('subs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      if (targetCard) {
+        targetCard.classList.add('ring','ring-slate-300');
+        // brief pulse
+        targetCard.animate([
+          { transform: 'scale(1)' },
+          { transform: 'scale(1.02)' },
+          { transform: 'scale(1)' }
+        ], { duration: 500, easing: 'ease-out' });
+        // ensure it’s centered if not already
+        setTimeout(()=> targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300);
+      }
+    })();
+
+    // A11y: focus the main heading for screen readers on load
+    (function(){
+      const h1 = document.querySelector('h1');
+      if (!h1) return;
+      h1.setAttribute('tabindex','-1');
+      // prevent auto-scroll jump
+      setTimeout(()=>{ try { h1.focus({ preventScroll: true }); } catch(_){} }, 0);
+    })();
+
+    // Scarcity: persistent weekly spots + early-bird countdown
+    (function(){
+      const SPOT_KEY = 'ivy_spots_week';
+      const COUNT_KEY = 'ivy_eb_deadline';
+      const spotsEl = document.getElementById('spots');
+      const countdownEl = document.getElementById('countdown');
+
+      // Spots left logic
+      let baseSpots = parseInt(new URLSearchParams(location.search).get('spots') || '6', 10);
+      const week = new Date();
+      const weekId = `${week.getFullYear()}-W${Math.ceil(((week - new Date(week.getFullYear(),0,1)) / 86400000 + new Date(week.getFullYear(),0,1).getDay()+1)/7)}`;
+      let stored = JSON.parse(localStorage.getItem(SPOT_KEY) || 'null');
+      if (!stored || stored.week !== weekId) {
+        stored = { week: weekId, spots: baseSpots };
+        localStorage.setItem(SPOT_KEY, JSON.stringify(stored));
+      }
+      function renderSpots(){ spotsEl.textContent = Math.max(0, stored.spots); }
+      renderSpots();
+      // Decrement on booking click (soft signal)
+      document.querySelectorAll('a[href*="calendly.com"],a[href*="buy.stripe.com"]').forEach(a=>{
+        a.addEventListener('click',()=>{
+          stored.spots = Math.max(0, stored.spots - 1);
+          localStorage.setItem(SPOT_KEY, JSON.stringify(stored));
+          renderSpots();
+        }, { passive: true });
+      });
+
+      // Countdown: 48h from first visit, persist until hit 0
+      let deadline = parseInt(localStorage.getItem(COUNT_KEY) || '0', 10);
+      if (!deadline || Date.now() > deadline) {
+        deadline = Date.now() + 48*60*60*1000; // 48h
+        localStorage.setItem(COUNT_KEY, String(deadline));
+      }
+      const tick = () => {
+        const diff = Math.max(0, deadline - Date.now());
+        const h = String(Math.floor(diff/3.6e6)).padStart(2,'0');
+        const m = String(Math.floor(diff%3.6e6/6e4)).padStart(2,'0');
+        const s = String(Math.floor(diff%6e4/1e3)).padStart(2,'0');
+        countdownEl.textContent = `${h}:${m}:${s}`;
+        if (diff === 0) clearInterval(intv);
+      };
+      const intv = setInterval(tick, 1000); tick();
+    })();
+    // Feature toggles (arrow to show/hide plan details)
+    (function(){
+      const toggles = document.querySelectorAll('.feat-toggle');
+      toggles.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const id = btn.getAttribute('aria-controls');
+          const panel = document.getElementById(id);
+          if (!panel) return;
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+          panel.classList.toggle('hidden', expanded);
+          const ico = btn.querySelector('.toggle-ico');
+          if (ico) ico.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+      });
+    })();
+    // Post‑Stripe redirect to Calendly (configure Payment Links to return to ?paid=plan)
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const paid = (params.get('paid')||'').toLowerCase();
+      if(!paid) return;
+
+      // Map plan -> Calendly URL (replace placeholders with your real links)
+      const calendly = {
+        light:    'https://calendly.com/YOUR_CALENDLY/light',
+        standard: 'https://calendly.com/YOUR_CALENDLY/standard',
+        pro:      'https://calendly.com/YOUR_CALENDLY/pro',
+        silver:   'https://calendly.com/YOUR_CALENDLY/silver',
+        gold:     'https://calendly.com/YOUR_CALENDLY/gold',
+        platinum: 'https://calendly.com/YOUR_CALENDLY/platinum'
+      };
+
+      function notConfigured(u){
+        return !u || /YOUR_CALENDLY/i.test(u);
+      }
+
+      const url = calendly[paid];
+      const bridge = document.getElementById('successBridge');
+      const fallback = document.getElementById('fallbackLink');
+
+      if (bridge) bridge.classList.remove('hidden');
+
+      if (notConfigured(url)){
+        // Calendly not set yet — show banner and stop here
+        if (fallback){
+          fallback.textContent = 'Calendly link not set yet';
+          fallback.removeAttribute('href');
+          fallback.classList.add('cursor-not-allowed','opacity-60');
+        }
+        return;
+      }
+
+      if (fallback) fallback.href = url;
+      // Wait 5 seconds to let users read the confirmation, then send them to schedule
+      setTimeout(()=>{ window.location.assign(url); }, 5000);
+    })();
+  </script>
+</body>
+</html>
