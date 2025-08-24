@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Book — Summit Prep</title>
-  <meta name="description" content="Book SAT tutoring or Academic English sessions with a Dual-Ivy Graduate." />
+  <title>Book — Peak Prep</title>
+  <meta name="description" content="Peak Prep — Book SAT tutoring or Academic English sessions with a Dual‑Ivy Graduate. 1:1 lessons, clear results." />
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Fonts -->
@@ -70,6 +70,30 @@
 
     /* Toggle arrow smoothness */
     .toggle-ico{transition:transform .25s ease}
+
+    /* Subtle header shadow when scrolling */
+    .header-shadow{box-shadow:0 12px 30px -25px rgba(2,6,23,.35)}
+
+    /* Plan card layout helpers */
+    .plan-card{display:flex;flex-direction:column}
+    .plan-body{flex:1}
+    .price-row{display:flex;align-items:flex-end;gap:.5rem;margin-top:1rem}
+    .cta-row{display:flex;gap:.5rem;margin-top:1.25rem}
+    @media (max-width: 767px){.cta-row>a,.cta-row>button{flex:1}}
+
+    /* Compare table polish */
+    .table-wrap{border:1px solid rgba(15,23,42,.08);border-radius:1rem;overflow:hidden;background:#fff}
+    .table-ui{width:100%;border-collapse:separate;border-spacing:0}
+    .table-ui thead th{position:sticky;top:0;background:#f8fafc;border-bottom:1px solid rgba(15,23,42,.08);font-weight:600}
+    .table-ui tbody tr:nth-child(even){background:#f9fafb}
+    .table-ui th,.table-ui td{padding:.85rem 1rem}
+
+    /* Details button subtle style */
+    .feat-toggle{background:linear-gradient(135deg,#fff,#f3f4f6);border:1px solid rgba(15,23,42,.14)}
+
+    /* Smooth reveal panel */
+    .reveal-panel{overflow:hidden;max-height:0;transition:max-height .35s ease}
+    .reveal-panel.open{max-height:400px}
   </style>
 </head>
 <body class="antialiased text-slate-900">
@@ -84,8 +108,7 @@
           <span class="font-semibold">Ready?</span> Finish in under 60 seconds. <span class="ml-2 text-xs text-slate-500">Secure • Refund guarantee</span>
         </div>
         <div class="flex items-center gap-2">
-          <a href="#tiers" class="px-4 py-2 rounded-xl btn-quiet">One‑off</a>
-          <a href="#subs" class="px-4 py-2 rounded-xl btn-primary">Subscribe</a>
+          <a href="#tiers" class="px-4 py-2 rounded-xl btn-primary">Book now</a>
         </div>
       </div>
     </div>
@@ -94,12 +117,12 @@
   <!-- Header -->
   <header class="site-header sticky top-0 z-50 backdrop-blur">
     <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
-      <a href="home.html#home" class="inline-flex items-center gap-2" aria-label="Summit Prep">
-        <img src="logo.png" alt="Summit Prep" class="h-9 w-auto" loading="eager" />
-        <span class="sr-only">Summit Prep</span>
+      <a href="index.html#home" class="inline-flex items-center gap-2" aria-label="Peak Prep">
+        <img src="logo.png" alt="Peak Prep" class="h-9 w-auto" loading="eager" />
+        <span class="sr-only">Peak Prep</span>
       </a>
       <nav class="hidden md:flex items-center gap-6">
-        <a href="home.html#home" class="nav-pill">Home</a>
+        <a href="index.html#home" class="nav-pill">Home</a>
         <a href="about.html" class="nav-pill">About</a>
         <a href="contact.html" class="nav-pill">Contact</a>
         <a href="#tiers" class="nav-pill nav-active">Book Now</a>
@@ -111,7 +134,7 @@
     </div>
     <div id="mobileNav" class="md:hidden hidden border-t">
       <div class="px-4 py-3 flex flex-col gap-3">
-        <a href="home.html#home" class="nav-pill">Home</a>
+        <a href="index.html#home" class="nav-pill">Home</a>
         <a href="about.html" class="nav-pill">About</a>
         <a href="contact.html" class="nav-pill">Contact</a>
         <a href="#tiers" class="nav-pill nav-active text-center">Book Now</a>
@@ -137,28 +160,19 @@
     <div class="max-w-6xl mx-auto px-4 flex flex-wrap items-center gap-3 justify-between">
       <div class="text-sm text-slate-600">Skip to:</div>
       <div class="flex flex-wrap gap-2">
-        <a href="#tiers" class="pill">One-off Sessions</a>
-        <a href="#subs" class="pill">Monthly Subscriptions</a>
+        <a href="#tiers" class="pill">Private Sessions</a>
         <a href="#compare" class="pill">Compare</a>
         <a href="#faq" class="pill">FAQ</a>
       </div>
     </div>
   </section>
 
-  <!-- Scarcity + countdown -->
-  <section id="urgency" class="py-6 bg-slate-50">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3">
-      <div class="text-sm text-slate-700">This week’s availability: <span id="spots" class="font-semibold">—</span> slots left.</div>
-      <div class="text-sm text-slate-700">Early‑bird ends in <span id="countdown" class="font-semibold tabular-nums">—:—:—</span>.</div>
-      <a href="#tiers" class="px-3 py-2 rounded-lg btn-primary text-sm">Reserve a spot</a>
-    </div>
-  </section>
 
   <!-- One-off tiers -->
   <section id="tiers" class="py-16">
     <div class="max-w-6xl mx-auto px-4 text-center">
-      <h2 class="text-2xl md:text-3xl font-semibold">One-off Sessions</h2>
-      <p class="mt-2 text-slate-600">Best for diagnostics or focused boosts.</p>
+      <h2 class="text-2xl md:text-3xl font-semibold">Private Sessions</h2>
+      <p class="mt-2 text-slate-600">Choose the session that fits your needs — clear, simple pricing.</p>
 
       <div class="grid md:grid-cols-3 gap-6 mt-8">
         <!-- Light -->
@@ -167,12 +181,8 @@
           <div class="text-sm text-slate-500">Diagnostic</div>
           <h3 class="font-semibold text-lg mt-1 flex items-center justify-between">
             Light
-            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-light">
-              Details
-              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
           </h3>
-          <div id="features-light" class="mt-2 hidden">
+          <div id="features-light" class="mt-2 reveal-panel" aria-hidden="true">
             <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
               <li>Baseline SAT/English assessment</li>
               <li>Personalized 4‑week plan</li>
@@ -194,12 +204,8 @@
           <div class="text-sm text-slate-500">1:1 Session</div>
           <h3 class="font-semibold text-lg mt-1 flex items-center justify-between">
             Standard
-            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-standard">
-              Details
-              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
           </h3>
-          <div id="features-standard" class="mt-2 hidden">
+          <div id="features-standard" class="mt-2 reveal-panel" aria-hidden="true">
             <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
               <li>60 min SAT or Academic English</li>
               <li>Targeted drills + homework</li>
@@ -220,14 +226,10 @@
           <div class="text-sm text-slate-500">Intensive</div>
           <h3 class="font-semibold text-lg mt-1 flex items-center justify-between">
             Pro
-            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-pro">
-              Details
-              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
           </h3>
-          <div id="features-pro" class="mt-2 hidden">
+          <div id="features-pro" class="mt-2 reveal-panel" aria-hidden="true">
             <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
-              <li>90 min + async essay feedback</li>
+              <li>60 min + async essay feedback</li>
               <li>Error‑pattern analysis</li>
               <li>7‑day follow‑up plan</li>
             </ul>
@@ -244,89 +246,6 @@
     </div>
   </section>
 
-  <!-- Subscriptions -->
-  <section id="subs" class="py-16 bg-slate-50">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h2 class="text-2xl md:text-3xl font-semibold">Monthly Subscriptions</h2>
-      <p class="mt-2 text-slate-600">Ongoing coaching + private booking links after checkout.</p>
-
-      <div class="grid md:grid-cols-3 gap-6 mt-8">
-        <!-- Silver -->
-        <div class="glass rounded-2xl p-6 text-left card hover">
-          <h3 class="font-semibold text-lg flex items-center justify-between">
-            Silver
-            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-silver">
-              Details
-              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </h3>
-          <div id="features-silver" class="mt-1 hidden">
-            <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
-              <li>4 private sessions / month (60 min)</li>
-              <li>Replay recording on request</li>
-              <li>Priority email support</li>
-            </ul>
-          </div>
-          <div class="mt-4 text-2xl font-bold">$399<span class="text-sm">/mo</span></div>
-          <div class="mt-5 flex gap-2">
-            <a href="https://buy.stripe.com/YOUR_STRIPE_LINK_SILVER" class="px-4 py-2 rounded-full btn-primary">Subscribe</a>
-            <button type="button" class="px-4 py-2 rounded-full btn-quiet feat-toggle" aria-expanded="false" aria-controls="features-silver">What’s included?</button>
-          </div>
-        </div>
-
-        <!-- Gold (anchor) -->
-        <div class="glass rounded-2xl p-6 text-left card hover ring-1 ring-slate-200 relative">
-          <div class="absolute -top-3 left-4">
-            <span class="bg-emerald-600 text-white text-xs px-3 py-1 rounded-full">Parent Favorite</span>
-          </div>
-          <h3 class="font-semibold text-lg flex items-center justify-between">
-            Gold
-            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-gold">
-              Details
-              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </h3>
-          <div id="features-gold" class="mt-1 hidden">
-            <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
-              <li>8 private sessions / month (60 min)</li>
-              <li>Essay feedback: up to 2 drafts / month</li>
-              <li>Priority scheduling (next‑week guaranteed)</li>
-            </ul>
-          </div>
-          <div class="mt-4 text-2xl font-bold">$749<span class="text-sm">/mo</span></div>
-          <div class="mt-5 flex gap-2">
-            <a href="https://buy.stripe.com/YOUR_STRIPE_LINK_GOLD" class="px-4 py-2 rounded-full btn-primary">Subscribe</a>
-            <button type="button" class="px-4 py-2 rounded-full btn-quiet feat-toggle" aria-expanded="false" aria-controls="features-gold">What’s included?</button>
-          </div>
-        </div>
-
-        <!-- Platinum -->
-        <div class="glass rounded-2xl p-6 text-left card hover">
-          <h3 class="font-semibold text-lg flex items-center justify-between">
-            Platinum
-            <button type="button" class="feat-toggle ml-2 rounded-md border px-2 py-1 text-xs" aria-expanded="false" aria-controls="features-platinum">
-              Details
-              <svg class="inline w-3 h-3 ml-1 toggle-ico" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </h3>
-          <div id="features-platinum" class="mt-1 hidden">
-            <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
-              <li>12 private sessions / month (60 min)</li>
-              <li>Unlimited essay drafts</li>
-              <li>Priority scheduling + WhatsApp check‑ins</li>
-            </ul>
-          </div>
-          <div class="mt-4 text-2xl font-bold">$1,499<span class="text-sm">/mo</span></div>
-          <div class="mt-5 flex gap-2">
-            <a href="https://buy.stripe.com/YOUR_STRIPE_LINK_PLATINUM" class="px-4 py-2 rounded-full btn-primary">Subscribe</a>
-            <button type="button" class="px-4 py-2 rounded-full btn-quiet feat-toggle" aria-expanded="false" aria-controls="features-platinum">What’s included?</button>
-          </div>
-        </div>
-      </div>
-
-      <p class="text-xs text-slate-500 mt-4">After subscribing, you’ll receive your private Calendly link to schedule included sessions.</p>
-    </div>
-  </section>
 
   <!-- Comparison table (clarity) -->
   <section id="compare" class="py-16">
@@ -337,47 +256,35 @@
           <thead>
             <tr class="text-left text-slate-500">
               <th class="py-3 pr-6">Feature</th>
-              <th class="py-3 pr-6">One‑off</th>
-              <th class="py-3 pr-6">Silver</th>
-              <th class="py-3 pr-6">Gold</th>
-              <th class="py-3 pr-6">Platinum</th>
+              <th class="py-3 pr-6">Light</th>
+              <th class="py-3 pr-6">Standard</th>
+              <th class="py-3 pr-6">Pro</th>
             </tr>
           </thead>
           <tbody class="divide-y">
             <tr>
-              <td class="py-3 pr-6">Sessions / month</td>
-              <td class="py-3 pr-6">—</td>
-              <td class="py-3 pr-6">4 privates</td>
-              <td class="py-3 pr-6">8 privates</td>
-              <td class="py-3 pr-6">12 privates</td>
-            </tr>
-            <tr>
               <td class="py-3 pr-6">Session length</td>
-              <td class="py-3 pr-6">60–90m (one‑off)</td>
-              <td class="py-3 pr-6">60m</td>
-              <td class="py-3 pr-6">60m</td>
-              <td class="py-3 pr-6">60m</td>
+              <td class="py-3 pr-6">60 min</td>
+              <td class="py-3 pr-6">60 min</td>
+              <td class="py-3 pr-6">60 min</td>
             </tr>
             <tr>
-              <td class="py-3 pr-6">Essay feedback</td>
-              <td class="py-3 pr-6">Pro only</td>
-              <td class="py-3 pr-6">—</td>
-              <td class="py-3 pr-6">Up to 2 drafts/mo</td>
-              <td class="py-3 pr-6">Unlimited</td>
+              <td class="py-3 pr-6">Focus</td>
+              <td class="py-3 pr-6">Diagnostic + plan</td>
+              <td class="py-3 pr-6">Targeted 1:1 lesson</td>
+              <td class="py-3 pr-6">Lesson + essay feedback</td>
             </tr>
             <tr>
-              <td class="py-3 pr-6">Parent updates</td>
-              <td class="py-3 pr-6">24h summary</td>
-              <td class="py-3 pr-6">Monthly report</td>
-              <td class="py-3 pr-6">Bi‑weekly</td>
-              <td class="py-3 pr-6">Weekly</td>
+              <td class="py-3 pr-6">Homework</td>
+              <td class="py-3 pr-6">4‑week roadmap</td>
+              <td class="py-3 pr-6">Drills + parent summary</td>
+              <td class="py-3 pr-6">Drills + 7‑day follow‑up</td>
             </tr>
             <tr>
-              <td class="py-3 pr-6">Priority scheduling</td>
-              <td class="py-3 pr-6">—</td>
-              <td class="py-3 pr-6">—</td>
-              <td class="py-3 pr-6">✓ (next‑week)</td>
-              <td class="py-3 pr-6">✓ (priority)</td>
+              <td class="py-3 pr-6">Best for</td>
+              <td class="py-3 pr-6">Starting out</td>
+              <td class="py-3 pr-6">Most students</td>
+              <td class="py-3 pr-6">Max results</td>
             </tr>
           </tbody>
         </table>
@@ -385,32 +292,7 @@
     </div>
   </section>
 
-  <!-- Social proof carousel -->
-  <section class="py-16 bg-slate-50">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-semibold text-center">What families say</h2>
-      <div class="relative mt-8">
-        <div id="carousel" class="flex gap-6 overflow-x-auto snap-x snap-mandatory px-1" aria-label="Testimonials">
-          <!-- Slide 1 -->
-          <figure class="min-w-[80%] md:min-w-[32%] snap-start glass rounded-2xl p-6">
-            <blockquote class="text-slate-700">“Our son jumped 190 points in six weeks. Straightforward plan, no fluff.”</blockquote>
-            <figcaption class="mt-3 text-sm text-slate-500">— A. Patel, Parent</figcaption>
-          </figure>
-          <!-- Slide 2 -->
-          <figure class="min-w-[80%] md:min-w-[32%] snap-start glass rounded-2xl p-6">
-            <blockquote class="text-slate-700">“Essay feedback was ruthless and exactly what she needed. Admitted ED.”</blockquote>
-            <figcaption class="mt-3 text-sm text-slate-500">— L. Chen, Parent</figcaption>
-          </figure>
-          <!-- Slide 3 -->
-          <figure class="min-w-[80%] md:min-w-[32%] snap-start glass rounded-2xl p-6">
-            <blockquote class="text-slate-700">“Professional, responsive, and results‑driven. Worth every dollar.”</blockquote>
-            <figcaption class="mt-3 text-sm text-slate-500">— M. Johnson, Parent</figcaption>
-          </figure>
-        </div>
-      </div>
-      <p class="text-xs text-slate-400 mt-3">* Results vary. Claims based on internal tracking of past cohorts.</p>
-    </div>
-  </section>
+  
 
   <!-- Policies / Trust -->
   <section id="policies" class="py-16">
@@ -420,8 +302,8 @@
         <p class="text-sm text-slate-600 mt-2">If it’s not a fit after your first 1:1, request a full refund within 24 hours.</p>
       </div>
       <div class="rounded-2xl border p-6 bg-white card hover">
-        <h3 class="font-semibold">Subscriptions</h3>
-        <p class="text-sm text-slate-600 mt-2">Plans unlock private booking links with monthly caps (4/8/12+). Unused sessions don’t roll unless agreed in writing.</p>
+        <h3 class="font-semibold">Payments</h3>
+        <p class="text-sm text-slate-600 mt-2">All sessions are paid via secure Stripe checkout. After payment, you’ll be redirected to Calendly to schedule.</p>
       </div>
       <div class="rounded-2xl border p-6 bg-white card hover">
         <h3 class="font-semibold">Rescheduling</h3>
@@ -436,12 +318,12 @@
       <h2 class="text-2xl md:text-3xl font-semibold">FAQ</h2>
       <div class="mt-6 grid md:grid-cols-2 gap-6">
         <details class="rounded-2xl border bg-white p-6 group" open>
-          <summary class="font-semibold cursor-pointer flex items-center justify-between">Do I pay in Calendly or Stripe? <span class="ml-2 text-slate-400 group-open:rotate-180 transition">▾</span></summary>
-          <p class="text-sm text-slate-600 mt-2">One‑off sessions are paid directly in Calendly. Subscriptions are paid in Stripe, then you get a private scheduling link.</p>
+          <summary class="font-semibold cursor-pointer flex items-center justify-between">Do I pay in Stripe or Calendly? <span class="ml-2 text-slate-400 group-open:rotate-180 transition">▾</span></summary>
+          <p class="text-sm text-slate-600 mt-2">All one-off sessions are paid in Stripe, then you’ll be redirected to book through Calendly.</p>
         </details>
         <details class="rounded-2xl border bg-white p-6 group">
           <summary class="font-semibold cursor-pointer flex items-center justify-between">Can I add more sessions later? <span class="ml-2 text-slate-400 group-open:rotate-180 transition">▾</span></summary>
-          <p class="text-sm text-slate-600 mt-2">Yes—book another 1:1 anytime or upgrade to a monthly plan with one click.</p>
+          <p class="text-sm text-slate-600 mt-2">Yes—book another 1:1 anytime. Many families start with Standard, then add Pro before test day.</p>
         </details>
         <details class="rounded-2xl border bg-white p-6 group">
           <summary class="font-semibold cursor-pointer flex items-center justify-between">Will my time zone be correct? <span class="ml-2 text-slate-400 group-open:rotate-180 transition">▾</span></summary>
@@ -453,26 +335,15 @@
         </details>
       </div>
 
-      <!-- Micro‑opt‑in (reciprocity) -->
-      <div class="mt-10 glass rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-          <div class="font-semibold">Not ready to book?</div>
-          <p class="text-sm text-slate-600">Get the free SAT Checklist (7 mistakes that cap scores) in your inbox.</p>
-        </div>
-        <form onsubmit="event.preventDefault();window.location='mailto:you@example.com?subject=SAT%20Checklist%20Request'" class="flex w-full md:w-auto items-center gap-2">
-          <input type="email" required placeholder="Email" class="w-full md:w-64 px-3 py-2 rounded-xl border" />
-          <button class="px-4 py-2 rounded-xl btn-primary" type="submit">Send</button>
-        </form>
-      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="border-t">
     <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-600 flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
-      <div>© <span id="y"></span> Summit Prep</div>
+      <div>© <span id="y"></span> Peak Prep</div>
       <div class="flex gap-4">
-        <a href="home.html#home" class="hover:text-slate-800">Home</a>
+        <a href="index.html#home" class="hover:text-slate-800">Home</a>
         <a href="about.html" class="hover:text-slate-800">About</a>
         <a href="contact.html" class="hover:text-slate-800">Contact</a>
         <a href="#policies" class="hover:text-slate-800">Policies</a>
@@ -531,7 +402,7 @@
       els.forEach(el=>io.observe(el));
     })();
 
-    // Deep-link to a plan via ?plan=light|standard|pro|silver|gold|platinum
+    // Deep-link to a plan via ?plan=light|standard|pro
     (function(){
       const params = new URLSearchParams(location.search);
       const plan = (params.get('plan') || '').toLowerCase();
@@ -552,15 +423,6 @@
           );
         }
         document.getElementById('tiers')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      // Subscriptions: match heading text
-      if (!targetCard && ['silver','gold','platinum'].includes(plan)) {
-        const scards = document.querySelectorAll('#subs .glass');
-        targetCard = [...scards].find(card =>
-          (card.querySelector('h3')?.textContent || '').toLowerCase().includes(plan)
-        );
-        document.getElementById('subs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
       if (targetCard) {
@@ -585,62 +447,35 @@
       setTimeout(()=>{ try { h1.focus({ preventScroll: true }); } catch(_){} }, 0);
     })();
 
-    // Scarcity: persistent weekly spots + early-bird countdown
-    (function(){
-      const SPOT_KEY = 'ivy_spots_week';
-      const COUNT_KEY = 'ivy_eb_deadline';
-      const spotsEl = document.getElementById('spots');
-      const countdownEl = document.getElementById('countdown');
-
-      // Spots left logic
-      let baseSpots = parseInt(new URLSearchParams(location.search).get('spots') || '6', 10);
-      const week = new Date();
-      const weekId = `${week.getFullYear()}-W${Math.ceil(((week - new Date(week.getFullYear(),0,1)) / 86400000 + new Date(week.getFullYear(),0,1).getDay()+1)/7)}`;
-      let stored = JSON.parse(localStorage.getItem(SPOT_KEY) || 'null');
-      if (!stored || stored.week !== weekId) {
-        stored = { week: weekId, spots: baseSpots };
-        localStorage.setItem(SPOT_KEY, JSON.stringify(stored));
-      }
-      function renderSpots(){ spotsEl.textContent = Math.max(0, stored.spots); }
-      renderSpots();
-      // Decrement on booking click (soft signal)
-      document.querySelectorAll('a[href*="calendly.com"],a[href*="buy.stripe.com"]').forEach(a=>{
-        a.addEventListener('click',()=>{
-          stored.spots = Math.max(0, stored.spots - 1);
-          localStorage.setItem(SPOT_KEY, JSON.stringify(stored));
-          renderSpots();
-        }, { passive: true });
-      });
-
-      // Countdown: 48h from first visit, persist until hit 0
-      let deadline = parseInt(localStorage.getItem(COUNT_KEY) || '0', 10);
-      if (!deadline || Date.now() > deadline) {
-        deadline = Date.now() + 48*60*60*1000; // 48h
-        localStorage.setItem(COUNT_KEY, String(deadline));
-      }
-      const tick = () => {
-        const diff = Math.max(0, deadline - Date.now());
-        const h = String(Math.floor(diff/3.6e6)).padStart(2,'0');
-        const m = String(Math.floor(diff%3.6e6/6e4)).padStart(2,'0');
-        const s = String(Math.floor(diff%6e4/1e3)).padStart(2,'0');
-        countdownEl.textContent = `${h}:${m}:${s}`;
-        if (diff === 0) clearInterval(intv);
-      };
-      const intv = setInterval(tick, 1000); tick();
-    })();
-    // Feature toggles (arrow to show/hide plan details)
+    // Feature toggles (pop-out panels)
     (function(){
       const toggles = document.querySelectorAll('.feat-toggle');
       toggles.forEach(btn=>{
+        const id = btn.getAttribute('aria-controls');
+        const panel = document.getElementById(id);
+        if (!panel) return;
+        // ensure starting state
+        panel.style.maxHeight = '0px';
+        panel.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+        const closedLabel = "What’s included?";
+        const openLabel = "Hide";
+        btn.textContent = closedLabel;
+
         btn.addEventListener('click', ()=>{
-          const id = btn.getAttribute('aria-controls');
-          const panel = document.getElementById(id);
-          if (!panel) return;
           const expanded = btn.getAttribute('aria-expanded') === 'true';
-          btn.setAttribute('aria-expanded', String(!expanded));
-          panel.classList.toggle('hidden', expanded);
-          const ico = btn.querySelector('.toggle-ico');
-          if (ico) ico.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+          const nextExpanded = !expanded;
+          btn.setAttribute('aria-expanded', String(nextExpanded));
+          panel.setAttribute('aria-hidden', String(!nextExpanded));
+          if (nextExpanded){
+            panel.classList.add('open');
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            btn.textContent = openLabel;
+          } else {
+            panel.style.maxHeight = '0px';
+            panel.classList.remove('open');
+            btn.textContent = closedLabel;
+          }
         });
       });
     })();
@@ -655,9 +490,6 @@
         light:    'https://calendly.com/YOUR_CALENDLY/light',
         standard: 'https://calendly.com/YOUR_CALENDLY/standard',
         pro:      'https://calendly.com/YOUR_CALENDLY/pro',
-        silver:   'https://calendly.com/YOUR_CALENDLY/silver',
-        gold:     'https://calendly.com/YOUR_CALENDLY/gold',
-        platinum: 'https://calendly.com/YOUR_CALENDLY/platinum'
       };
 
       function notConfigured(u){
