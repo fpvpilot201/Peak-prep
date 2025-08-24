@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Peak Prep</title>
+  <meta name="description" content="Peak Prep — 1:1 SAT & Academic English coaching by a Dual‑Ivy Graduate. Private lessons, clear plans, steady results." />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Performance + Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif}
+
+    /* Global polish */
+    .glass{background:rgba(255,255,255,.72);backdrop-filter:saturate(160%) blur(12px);border:1px solid rgba(15,23,42,.08)}
+    .card.hover{transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s}
+    .card.hover:hover{transform:translateY(-6px);box-shadow:0 18px 50px -24px rgba(2,6,23,.35)}
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #334155 0%, #6366f1 100%);
+      transform-origin: left;
+      transform: scaleX(0);
+      z-index: 60;
+      pointer-events: none;
+      transition: background 0.2s;
+    }
+    /* Header shadow effect */
+    .header-shadow {
+      box-shadow: 0 8px 24px rgba(2,6,23,.08), 0 1.5px 0 rgba(15,23,42,.08);
+    }
+
+    /* Headline treatments */
+    .gradient-text-animate{
+      background: linear-gradient(120deg,#0b1220 0%, #334155 45%, #6b7280 70%, #ffffff 100%);
+      background-size:300% 300%;
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      animation: gradientShift 10s ease-in-out infinite; text-shadow: 0 0 10px rgba(255,255,255,.12);
+    }
+    .hero-solid{color:#0b1220}
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+    /* Reveal utils */
+    .fx-rise{opacity:0;transform:translateY(24px);transition:all .8s cubic-bezier(.22,1,.36,1)}
+    .fx-rise.revealed{opacity:1;transform:none}
+    .fx-fade{opacity:0;filter:blur(8px);transition:all .9s}
+    .fx-fade.revealed{opacity:1;filter:blur(0)}
+    .fx-scale{opacity:0;transform:scale(.96);transition:all .8s cubic-bezier(.16,1,.3,1)}
+    .fx-scale.revealed{opacity:1;transform:scale(1)}
+
+    /* CTAs */
+    .btn-primary{background:#0f172a;color:#fff;border:1px solid rgba(255,255,255,.2);box-shadow:0 4px 18px rgba(2,6,23,.2);transition:transform .25s ease,box-shadow .25s ease}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(2,6,23,.28)}
+    .btn-quiet{background:linear-gradient(135deg,#fff,#f3f4f6);color:#0f172a;border:1px solid rgba(15,23,42,.14);box-shadow:0 6px 18px rgba(2,6,23,.08);transition:transform .25s ease,box-shadow .25s ease}
+    .btn-quiet:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(2,6,23,.16)}
+
+    /* Header (auto-contrast) */
+    /* Navigation Pills (Apple-esque) */
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      padding: 0 1.1rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      color: #0f172a;
+      background: transparent;
+      transition: background .18s, color .18s, box-shadow .18s, transform .18s;
+      position: relative;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .nav-pill:hover, .nav-pill:focus-visible {
+      background: rgba(99,102,241,.10);
+      color: #3730a3;
+      transform: translateY(-1px) scale(1.03);
+      box-shadow: 0 4px 16px rgba(99,102,241,.08);
+    }
+    .nav-active {
+      background: #0f172a;
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(2,6,23,.18);
+    }
+    /* Button styles */
+    .btn-primary {
+      background: #0f172a;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.2);
+      box-shadow: 0 4px 18px rgba(2,6,23,.2);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .btn-primary:hover, .btn-primary:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(2,6,23,.28);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #0f172a;
+      border: 1.5px solid #0f172a;
+      box-shadow: none;
+      transition: background .18s, color .18s, border .18s;
+    }
+    .btn-outline:hover, .btn-outline:focus-visible {
+      background: #0f172a;
+      color: #fff;
+      border-color: #0f172a;
+    }
+
+    /* Colleges rail */
+    .logo-rail{background:radial-gradient(120% 140% at 50% -10%,rgba(255,255,255,.92) 0%,rgba(255,255,255,.55) 60%,rgba(255,255,255,.28) 100%);border:1px solid rgba(15,23,42,.09);box-shadow:0 8px 30px rgba(2,6,23,.08),inset 0 1px 0 rgba(255,255,255,.6)}
+    .shimmer{background:linear-gradient(90deg,transparent,rgba(255,255,255,.8),transparent);filter:blur(1px);animation:sweep 3.5s ease-in-out infinite;opacity:.45}
+    @keyframes sweep{0%{transform:translateX(-30%);opacity:0}30%{opacity:.45}100%{transform:translateX(120%);opacity:0}}
+    .logo-chip{height:clamp(56px,7.2vw,92px);filter:grayscale(1) contrast(.95) brightness(.93);opacity:.85;transition:transform .5s cubic-bezier(.16,1,.3,1),filter .5s,opacity .5s}
+    .logo-chip:hover{transform:translateY(-4px) scale(1.06);filter:grayscale(0) contrast(1.05) brightness(1);opacity:1}
+
+    /* Benefits */
+    .benefit{display:flex;align-items:flex-start;gap:.65rem;padding:.55rem .4rem;border-radius:.9rem;transition:background .25s ease,transform .25s ease}
+    .benefit:hover{background:rgba(2,6,23,.04);transform:translateY(-1px)}
+    .check{width:22px;height:22px;color:#0f172a;flex:0 0 auto;margin-top:2px}
+
+    /* “Most popular” ribbon for Standard/Gold */
+    .ribbon{position:relative}
+    .ribbon::after{content:'Most Popular';position:absolute;top:-10px;right:-10px;background:#0f172a;color:#fff;font-size:10px;padding:4px 8px;border-radius:9999px}
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion:reduce){
+      .fx-rise,.fx-fade,.fx-scale,.card.hover{transition:none!important;animation:none!important}
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-900">
+
+  <!-- Scroll progress -->
+  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Background -->
+  <div class="fixed inset-0 -z-20 pointer-events-none">
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-white"></div>
+  </div>
+
+  <!-- Header -->
+  <header id="siteHeader" class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
+      <a href="#home" class="inline-flex items-center gap-2 font-extrabold text-xl" aria-label="Peak Prep">
+        <img src="logo.png" alt="Peak Prep" class="h-10 w-auto" loading="eager" />
+        <span class="sr-only">Peak Prep</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-2">
+        <a href="#home" class="nav-pill">Home</a>
+        <a href="about.html" class="nav-pill">About</a>
+        <a href="contact.html" class="nav-pill">Contact</a>
+        <a href="booking.html" class="nav-pill nav-active">Book Now</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border">
+        <span class="sr-only">Open menu</span>
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="mobileNav" class="md:hidden hidden border-t glass">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="#home" class="nav-pill">Home</a>
+        <a href="about.html" class="nav-pill">About</a>
+        <a href="contact.html" class="nav-pill">Contact</a>
+        <a href="booking.html" class="nav-pill nav-active text-center">Book Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 py-24 grid md:grid-cols-12 gap-10 items-center">
+      <!-- LEFT -->
+      <div class="md:col-span-7 fx-rise">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          <span class="hero-solid">1:1 SAT & Academic English Coaching</span><br class="hidden md:block" />
+          <span class="gradient-text-animate">by a Dual-Ivy Graduate</span>
+        </h1>
+
+        <p class="mt-6 text-lg text-slate-700 fx-fade max-w-2xl">
+          Private, tailored lessons that reduce stress and raise scores. No groups. No fluff. Just a clear plan and steady execution.
+        </p>
+
+        <div class="relative z-10 flex flex-wrap justify-start gap-4 mt-8">
+          <a href="#pricing" class="inline-block px-7 py-3 rounded-full font-semibold text-base md:text-lg tracking-wide btn-primary">View Prices →</a>
+          <a href="booking.html" class="inline-block px-7 py-3 rounded-full font-semibold text-base md:text-lg tracking-wide btn-quiet">Book Now →</a>
+        </div>
+
+        <!-- Proof bar -->
+        <div class="mt-5 text-sm text-slate-600">
+          Trusted by <span class="font-semibold">500+ families</span> • Ivy admits (e.g., Brown, Columbia) • <span class="font-semibold">100% 1:1</span>
+        </div>
+
+        <!-- Colleges rail -->
+        <div class="mt-6">
+          <div class="text-xs md:text-sm uppercase tracking-[0.18em] text-slate-500 text-left md:text-center mb-3">Colleges Attended</div>
+          <div class="logo-rail relative rounded-2xl p-3">
+            <div class="pointer-events-none absolute inset-0 rounded-2xl overflow-hidden">
+              <div class="absolute -inset-x-10 -top-1 h-[2px] shimmer"></div>
+            </div>
+            <div id="logoStrip" class="flex items-center justify-center gap-10 md:gap-16 overflow-hidden">
+              <img src="Brown-university-emblem.png" alt="Brown University" class="logo-chip" loading="lazy" />
+              <img src="columb.png" alt="Columbia University" class="logo-chip" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="md:col-span-5">
+        <div class="glass rounded-3xl p-6 md:p-8 shadow-2xl fx-scale">
+          <div class="text-sm uppercase tracking-wide text-slate-500 mb-3">What You’ll Get</div>
+          <ul class="space-y-3">
+            <li class="benefit">
+              <svg class="check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              SAT timing & reading systems that add points fast
+            </li>
+            <li class="benefit">
+              <svg class="check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Essay feedback loops with clear rubrics
+            </li>
+            <li class="benefit">
+              <svg class="check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Weekly goals, drills, and progress check-ins
+            </li>
+            <li class="benefit">
+              <svg class="check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Priority scheduling on Pro
+            </li>
+          </ul>
+
+          <!-- Credible metrics -->
+          <div class="mt-6 grid grid-cols-3 divide-x rounded-xl border overflow-hidden">
+            <div class="py-3 text-center">
+              <div class="text-xl font-bold">500+</div>
+              <div class="text-xs text-slate-500">Students</div>
+            </div>
+            <div class="py-3 text-center">
+              <div class="text-xl font-bold">Ivy</div>
+              <div class="text-xs text-slate-500">League admits</div>
+            </div>
+            <div class="py-3 text-center">
+              <div class="text-xl font-bold">1:1</div>
+              <div class="text-xs text-slate-500">Only</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- What to Expect -->
+  <section id="results" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-semibold fx-rise">What to Expect</h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="rounded-2xl bg-white p-6 shadow fx-rise">A baseline diagnostic and a personalized plan.</div>
+        <div class="rounded-2xl bg-white p-6 shadow fx-rise">Iterative essay feedback with clear rubrics.</div>
+        <div class="rounded-2xl bg-white p-6 shadow fx-rise">Weekly goals and a simple progress check-in.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-5xl font-extrabold gradient-text-animate fx-rise">Pricing</h2>
+      <p class="mt-4 text-lg text-slate-600 fx-fade">All options are <strong>100% 1:1</strong>. No contracts. Book in ~60 seconds via Stripe → Calendly. Clear inclusions below.</p>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-8">
+        <div class="rounded-2xl glass p-8 shadow hover:shadow-2xl transition-all fx-scale h-full">
+          <h3 class="text-xl font-semibold">Light</h3>
+          <div class="mt-1">
+            <span class="inline-block text-[11px] tracking-wide uppercase bg-slate-100 text-slate-700 rounded-full px-2 py-1">Best for starting out</span>
+          </div>
+          <p class="mt-2 text-slate-600">Diagnostic test + study roadmap</p>
+          <div class="mt-6 text-3xl font-bold">$59</div>
+          <p class="text-sm text-slate-500">One-time, 60‑minute session</p>
+          <ul class="mt-4 text-sm text-slate-600 space-y-2 text-left">
+            <li>• Baseline diagnostic</li>
+            <li>• Score range + study roadmap (PDF)</li>
+            <li>• 7‑day practice plan</li>
+          </ul>
+          <a href="booking.html?plan=light" class="mt-6 inline-block px-5 py-2 rounded-full btn-primary">Book</a>
+        </div>
+
+        <div class="relative rounded-2xl glass p-8 shadow-lg hover:shadow-2xl transition-all fx-scale ribbon h-full">
+          <h3 class="text-xl font-semibold">Standard</h3>
+          <div class="mt-1">
+            <span class="inline-block text-[11px] tracking-wide uppercase bg-slate-900 text-white rounded-full px-2 py-1">Most popular</span>
+          </div>
+          <p class="mt-2 text-slate-600">Focused 1:1 SAT or English</p>
+          <div class="mt-6 text-3xl font-bold">$125</div>
+          <p class="text-sm text-slate-500">One-time, 60‑minute session</p>
+          <ul class="mt-4 text-sm text-slate-600 space-y-2 text-left">
+            <li>• 60‑min private lesson</li>
+            <li>• Targeted SAT/Academic English drills</li>
+            <li>• Homework plan + check‑in</li>
+          </ul>
+          <a href="booking.html?plan=standard" class="mt-6 inline-block px-5 py-2 rounded-full btn-primary">Book Now</a>
+        </div>
+
+        <div class="rounded-2xl glass p-8 shadow hover:shadow-2xl transition-all fx-scale h-full">
+          <h3 class="text-xl font-semibold">Pro</h3>
+          <div class="mt-1">
+            <span class="inline-block text-[11px] tracking-wide uppercase bg-indigo-100 text-indigo-800 rounded-full px-2 py-1">Best for max results</span>
+          </div>
+          <p class="mt-2 text-slate-600">Intensive + essay feedback</p>
+          <div class="mt-6 text-3xl font-bold">$175</div>
+          <p class="text-sm text-slate-500">One-time, 60‑minute session</p>
+          <ul class="mt-4 text-sm text-slate-600 space-y-2 text-left">
+            <li>• 60‑min private lesson</li>
+            <li>• Essay feedback on 1 draft (async)</li>
+            <li>• Priority scheduling</li>
+          </ul>
+          <a href="booking.html?plan=pro" class="mt-6 inline-block px-5 py-2 rounded-full btn-primary">Book</a>
+        </div>
+      </div>
+
+
+      <p class="mt-8 text-xs text-slate-500">Refund after first session if not satisfied. Cancel anytime.</p>
+    </div>
+  </section>
+
+  <!-- Book -->
+  <section id="book" class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-semibold fx-rise">Book a Session</h2>
+      <p class="mt-2 text-slate-600">Choose your tier below. You’ll pay via Stripe and schedule via Calendly.</p>
+      <div class="grid md:grid-cols-3 gap-6 mt-6">
+        <a href="booking.html?plan=light#tiers" class="rounded-xl glass p-6 hover:shadow-xl fx-scale">
+          <div class="font-medium">Light (Diagnostic)</div>
+          <p class="text-sm text-slate-600">60‑minute private session.</p>
+        </a>
+        <a href="booking.html?plan=standard#tiers" class="rounded-xl glass p-6 hover:shadow-xl fx-scale">
+          <div class="font-medium">Standard (1:1)</div>
+          <p class="text-sm text-slate-600">60‑minute private session.</p>
+        </a>
+        <a href="booking.html?plan=pro#tiers" class="rounded-xl glass p-6 hover:shadow-xl fx-scale">
+          <div class="font-medium">Pro (Intensive)</div>
+          <p class="text-sm text-slate-600">60‑minute private session + async feedback.</p>
+        </a>
+      </div>
+      <!-- Helper text removed -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t">
+    <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-600 flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+      <div>© <span id="y"></span> Peak Prep</div>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-slate-800">FAQ</a>
+        <a href="policies.html" class="hover:text-slate-800">Policies</a>
+        <a href="#" class="hover:text-slate-800">Student Portal</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky CTA -->
+  <div id="stickyCTA" class="fixed inset-x-0 bottom-3 z-50 px-4 md:px-0">
+    <div class="max-w-3xl mx-auto rounded-2xl glass border p-4 shadow-lg flex items-center justify-between gap-4">
+      <div class="text-sm md:text-base">Book a <span class="font-semibold">1:1 slot</span> — new availability weekly.</div>
+      <a href="#book" class="rounded-xl px-4 py-2 btn-primary">Book now</a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    const $ = (s, r=document) => r.querySelector(s);
+    const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+
+    // Year
+    $('#y').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    $('#menuBtn')?.addEventListener('click', ()=> $('#mobileNav')?.classList.toggle('hidden'));
+
+    // Progress bar
+    const scrollProgress = document.getElementById('scrollProgress');
+    const onProgress = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      scrollProgress.style.transform = `scaleX(${max ? (h.scrollTop / max) : 0})`;
+    };
+    window.addEventListener('scroll', onProgress, { passive: true }); onProgress();
+
+    // Reveal on view
+    const revealEls = $$('.fx-rise,.fx-fade,.fx-scale');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
+      })
+    },{threshold:.15});
+    revealEls.forEach(el=>io.observe(el));
+
+    // Sticky CTA visibility near footer
+    const sticky = $('#stickyCTA'), footer = document.querySelector('footer');
+    const hideIO = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(sticky) sticky.style.opacity = e.isIntersecting? .0 : 1; });
+    },{threshold:.2});
+    footer && hideIO.observe(footer);
+
+    // Header auto-contrast: white over hero, dark after scroll
+    const headerEl = $('#siteHeader'), heroEl = $('#home');
+    if (headerEl && heroEl){
+      const observer = new IntersectionObserver(([e])=>{
+        if (e.isIntersecting){
+          headerEl.classList.add('on-hero');
+          headerEl.classList.remove('scrolled');
+        } else {
+          headerEl.classList.remove('on-hero');
+          headerEl.classList.add('scrolled');
+        }
+      }, { rootMargin: "-64px 0px 0px 0px", threshold: 0.1 });
+      observer.observe(heroEl);
+    }
+  </script>
+</body>
+</html>
